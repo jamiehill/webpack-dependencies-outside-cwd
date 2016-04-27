@@ -8,10 +8,13 @@ const babelSettings = {
     extends: main+'/.babelrc'
 }
 
+console.log("Babel: "+JSON.stringify(babelSettings));
+
 module.exports = {
     entry: main+'/src/App.js',
     resolve: {
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
+        modulesDirectories: [main+'/node_modules']
     },
     output: {
         path: `${main}/dist`,
@@ -24,10 +27,10 @@ module.exports = {
             include: [main+'/src', root+'/sibling']
         }]
     },
-    resolve: {
-        root: main+'/node_modules',
-        modulesDirectories: [main+'/node_modules']
-    },
+    // resolve: {
+        // root: main+'/node_modules',
+        // modulesDirectories: [main+'/node_modules']
+    // },
     plugins: [
         new webpack.ProvidePlugin({
             "React": "react",
